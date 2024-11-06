@@ -14,8 +14,6 @@
     </div>
 
     <p v-if="errorMessage" class="error-message">{{ this.errorMessage }}</p>
-    
-    <!-- Exibindo as informações de forma centralizada em um card -->
     <div class="responseApiContainer" v-if="!data">
       <h2>Digite um endereço correto para obter as informações meteorológicas.</h2>
     </div>
@@ -25,7 +23,7 @@
       <p>{{ data.name }}, {{ data.sys.country }}</p>
       <p>Temperatura: {{ data.main.temp }}°C</p>
       <p>Condição do tempo: {{ data.weather[0].description }}</p>
-      <img :src="`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`" alt="Ícone de clima" />
+      <img :src="`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`" alt="" />
     </div>
   </div>
 </template>
@@ -71,8 +69,10 @@ export default {
 }
 
 body {
-  background-color: #1f2a3e; /* Darker Blue */
-  color: #f5f5f5; /* Light Grey */
+  background-image: url('https://i.pinimg.com/originals/0c/96/7c/0c967c4af27aa805391e3be495936acd.png');
+  background-size: cover;
+  background-position: center;
+  color: #ecf0f1; /* Light Grey */
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -82,22 +82,22 @@ body {
 
 /* Container */
 .container {
-  background-color: rgba(31, 42, 62, 0.9);
+  background-color: rgba(44, 62, 80, 0.85);
   padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.6);
-  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  max-width: 500px;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-/* Header */
 h1 {
-  color: #e67e22; /* Warm Orange */
-  font-size: 2.5rem;
+  color: #f39c12; /* Gold */
+  font-size: 2.2rem;
   margin-bottom: 20px;
   font-weight: bold;
   text-transform: uppercase;
@@ -113,32 +113,32 @@ h1 {
 .custom-input {
   padding: 12px;
   font-size: 16px;
-  border: 2px solid #e67e22;
-  border-radius: 30px;
-  margin-right: 15px;
-  background-color: #34495e; /* Darker Gray */
+  border: 2px solid #f39c12;
+  border-radius: 25px;
+  margin-right: 12px;
+  background-color: rgba(236, 240, 241, 0.2);
   color: #fff;
   transition: 0.3s ease-in-out;
 }
 
 .custom-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .custom-input:focus {
   outline: none;
-  border-color: #f39c12; /* Lighter Orange */
+  border-color: #e67e22; /* Orange */
 }
 
 .custom-button {
-  background-color: #e67e22;
+  background-color: #e67e22; /* Orange */
   color: #fff;
   border: none;
   padding: 12px 25px;
-  border-radius: 30px;
+  border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s;
 }
 
 .custom-button:hover {
@@ -158,18 +158,18 @@ h1 {
 
 /* API Response Section */
 .responseApiContainer {
-  background-color: rgba(44, 62, 80, 0.7); /* Dark Card Background */
+  background-color: rgba(236, 240, 241, 0.3);
   color: #fff;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   width: 100%;
   margin-top: 20px;
   text-align: left;
 }
 
 .responseApiContainer h2 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   margin-bottom: 15px;
 }
 
@@ -179,7 +179,7 @@ h1 {
 }
 
 .responseApiContainer img {
-  max-width: 50px;
+  max-width: 60px;
   margin-top: 15px;
 }
 </style>
