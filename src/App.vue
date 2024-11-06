@@ -1,29 +1,26 @@
 <template>
   <div class="container">
-    <h1>Informações Meteorológicas</h1>
-    <div class="input-container">
-      <input
-        type="text"
-        v-model="cityInput"
-        class="custom-input"
-        placeholder="Digite sua cidade aqui"
-      />
-      <button class="custom-button" @click="handleFetch">
-        <span>Buscar Clima</span>
-      </button>
-    </div>
+    <div style="background-color: #000; padding: 15px; border-radius: 15px;">
+      <h1>Informações Meteorológicas</h1>
+      <div class="input-container">
+        <input type="text" v-model="cityInput" class="custom-input" placeholder="Digite sua cidade aqui" />
+        <button class="custom-button" @click="handleFetch">
+          <span>Buscar Clima</span>
+        </button>
+      </div>
 
-    <p v-if="errorMessage" class="error-message">{{ this.errorMessage }}</p>
-    <div class="responseApiContainer" v-if="!data">
-      <h2>Digite um endereço correto para obter as informações meteorológicas.</h2>
-    </div>
-    <div class="responseApiContainer" v-if="data">
-      <h2>Resultado</h2>
-      <hr />
-      <p>{{ data.name }}, {{ data.sys.country }}</p>
-      <p>Temperatura: {{ data.main.temp }}°C</p>
-      <p>Condição do tempo: {{ data.weather[0].description }}</p>
-      <img :src="`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`" alt="" />
+      <p v-if="errorMessage" class="error-message">{{ this.errorMessage }}</p>
+      <div class="responseApiContainer" v-if="!data">
+        <h2>Digite um endereço correto para obter as informações meteorológicas.</h2>
+      </div>
+      <div class="responseApiContainer" v-if="data">
+        <h2>Resultado</h2>
+        <hr />
+        <p>{{ data.name }}, {{ data.sys.country }}</p>
+        <p>Temperatura: {{ data.main.temp }}°C</p>
+        <p>Condição do tempo: {{ data.weather[0].description }}</p>
+        <img :src="`https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`" alt="Clima" />
+      </div>
     </div>
   </div>
 </template>
@@ -61,125 +58,163 @@ export default {
 
 <style scoped>
 /* Base Reset */
-* {
+*
+{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
 
-body {
-  background-image: url('https://i.pinimg.com/originals/0c/96/7c/0c967c4af27aa805391e3be495936acd.png');
-  background-size: cover;
-  background-position: center;
-  color: #ecf0f1; /* Light Grey */
+body
+{
+  color: #ecf0f1;
   height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 /* Container */
-.container {
-  background-color: rgba(44, 62, 80, 0.85);
+.container
+{
+  background-image: url('https://i.pinimg.com/originals/0c/96/7c/0c967c4af27aa805391e3be495936acd.png');
+  background-size: cover;
   padding: 40px;
   border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
   width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
+  backdrop-filter: blur(10px);
 }
 
-h1 {
-  color: #f39c12; /* Gold */
-  font-size: 2.2rem;
+h1
+{
+  color: #f39c12;
+  /* Gold */
+  font-size: 2.4rem;
   margin-bottom: 20px;
   font-weight: bold;
   text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 /* Input Section */
-.input-container {
+.input-container
+{
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
 }
 
-.custom-input {
-  padding: 12px;
+.custom-input
+{
+  padding: 14px;
   font-size: 16px;
   border: 2px solid #f39c12;
   border-radius: 25px;
   margin-right: 12px;
-  background-color: rgba(236, 240, 241, 0.2);
+  background-color: rgba(236, 240, 241, 0.6);
   color: #fff;
   transition: 0.3s ease-in-out;
+  width: 220px;
 }
 
-.custom-input::placeholder {
+.custom-input::placeholder
+{
   color: rgba(255, 255, 255, 0.7);
 }
 
-.custom-input:focus {
+.custom-input:focus
+{
   outline: none;
-  border-color: #e67e22; /* Orange */
+  border-color: #e67e22;
+  /* Orange */
 }
 
-.custom-button {
-  background-color: #e67e22; /* Orange */
+.custom-button
+{
+  background-color: #e67e22;
+  /* Orange */
   color: #fff;
   border: none;
-  padding: 12px 25px;
+  padding: 14px 28px;
   border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
+  display: flex;
+  align-items: center;
 }
 
-.custom-button:hover {
-  background-color: #d35400; /* Darker Orange */
+.custom-button:hover
+{
+  background-color: #d35400;
+  /* Darker Orange */
+  transform: scale(1.05);
 }
 
-.custom-button span {
-  margin-right: 5px;
+.custom-button span
+{
+  margin-right: 8px;
+  font-weight: bold;
 }
 
 /* Error Message */
-.error-message {
-  color: #e74c3c; /* Red */
+.error-message
+{
+  color: #e74c3c;
+  /* Red */
   font-weight: bold;
   margin-top: 20px;
+  text-align: center;
+  font-size: 1.1rem;
 }
 
 /* API Response Section */
-.responseApiContainer {
-  background-color: rgba(236, 240, 241, 0.3);
+.responseApiContainer
+{
+  background-color: rgba(236, 240, 241, 0.7);
   color: #fff;
-  padding: 20px;
-  border-radius: 10px;
+  padding: 25px;
+  border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   width: 100%;
   margin-top: 20px;
   text-align: left;
 }
 
-.responseApiContainer h2 {
-  font-size: 1.6rem;
+.responseApiContainer h2
+{
+  font-size: 1.8rem;
   margin-bottom: 15px;
+  font-weight: 600;
 }
 
-.responseApiContainer hr {
+.responseApiContainer hr
+{
   border: 1px solid #fff;
   margin: 10px 0;
 }
 
-.responseApiContainer img {
-  max-width: 60px;
+.responseApiContainer img
+{
+  max-width: 80px;
   margin-top: 15px;
+  transition: transform 0.3s ease;
+}
+
+.responseApiContainer img:hover
+{
+  transform: scale(1.1);
 }
 </style>
