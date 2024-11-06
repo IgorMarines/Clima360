@@ -15,11 +15,10 @@
 
     <p v-if="errorMessage" class="error-message">{{ this.errorMessage }}</p>
     <div class="responseApiContainer" v-if="!data">
-      <h2>Digite um endereço correto para obter as informações meteorologicas.</h2>
+      <h2>Digite um endereço correto para obter as informações meteorológicas.</h2>
     </div>
     <div class="responseApiContainer" v-if="data">
       <h2>Resultado</h2>
-
       <hr />
       <p>{{ data.name }}, {{ data.sys.country }}</p>
       <p>Temperatura: {{ data.main.temp }}°C</p>
@@ -39,97 +38,143 @@ export default {
       unit: 'metric',
       errorMessage: null,
       data: null
-    }
+    };
   },
   methods: {
     handleFetch() {
-      const api = `https://api.openweathermap.org/data/2.5/weather?q=${this.cityInput}&units=${this.unit}&lang=${this.lang}&appid=${this.apiKey}`
+      const api = `https://api.openweathermap.org/data/2.5/weather?q=${this.cityInput}&units=${this.unit}&lang=${this.lang}&appid=${this.apiKey}`;
 
       fetch(api)
         .then((response) => response.json())
         .then((data) => {
-          this.data = data
-          this.errorMessage = null
+          this.data = data;
+          this.errorMessage = null;
         })
         .catch((error) => {
-          console.error('Erro:', error)
-          this.errorMessage = 'Erro ao obter dados. Verifique a cidade e tente novamente.'
-        })
+          console.error('Erro:', error);
+          this.errorMessage = 'Erro ao obter dados. Verifique a cidade e tente novamente.';
+        });
     }
   }
-}
+};
 </script>
 
 <style scoped>
-.container {
-  max-width: 100%;
-  margin: 0 auto;
-  height: 100vh;
-  background: url('https://i.pinimg.com/originals/0c/96/7c/0c967c4af27aa805391e3be495936acd.png');
-  padding: 20px;
-  text-align: center;
+/* Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.container h1 {
+body {
+  background: linear-gradient(135deg, #2980b9, #8e44ad);
   color: #fff;
-  font-weight: bold;
-}
-
-.input-container {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20px;
+  text-align: center;
 }
 
-.error-message {
-  color: red;
+/* Container */
+.container {
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+}
+
+h1 {
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 20px;
   font-weight: bold;
-  margin-top: 10px;
+  letter-spacing: 1px;
+}
+
+/* Input Section */
+.input-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
 }
 
 .custom-input {
-  padding: 10px;
+  padding: 12px;
   font-size: 16px;
-  border: 1px solid #2196f3; /* Cor padrão do Material Design Blue */
-  border-radius: 4px;
-  flex: 1;
+  border: 2px solid #fff;
+  border-radius: 25px;
+  margin-right: 10px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  transition: 0.3s ease-in-out;
+}
+
+.custom-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: #f39c12;
 }
 
 .custom-button {
-  background-color: #2196f3; /* Cor padrão do Material Design Blue */
-  color: white;
+  background-color: #f39c12;
+  color: #fff;
   border: none;
-  padding: 10px 20px;
-  border-radius: 4px;
+  padding: 12px 25px;
+  border-radius: 25px;
   cursor: pointer;
   font-size: 16px;
-  margin-left: 10px;
   transition: background-color 0.3s;
 }
 
 .custom-button:hover {
-  background-color: #1565c0; /* Cor mais escura ao passar o mouse */
+  background-color: #e67e22;
 }
 
 .custom-button span {
   margin-right: 5px;
 }
 
+/* Error Message */
+.error-message {
+  color: #e74c3c;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* API Response Section */
 .responseApiContainer {
-  background: #ffffff; /* Light Sky Blue */
-  color: #000000;
-  padding: 15px 30px;
-  border-radius: 15px;
-  box-shadow:
-    rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px,
-    rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px,
-    rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  max-width: 500px;
+  width: 100%;
+  margin-top: 20px;
+  text-align: left;
 }
 
 .responseApiContainer h2 {
-  font-weight: bold;
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+}
+
+.responseApiContainer hr {
+  border: 1px solid #fff;
+  margin: 10px 0;
+}
+
+.responseApiContainer img {
+  max-width: 50px;
+  margin-top: 15px;
 }
 </style>
