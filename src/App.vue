@@ -60,7 +60,7 @@ export default {
 </script>
 
 <style scoped>
-/* Base */
+/* Base Reset */
 * {
   margin: 0;
   padding: 0;
@@ -69,8 +69,8 @@ export default {
 }
 
 body {
-  background: linear-gradient(135deg, #2980b9, #8e44ad);
-  color: #fff;
+  background-color: #2c3e50; /* Dark Blue */
+  color: #ecf0f1; /* Light Grey */
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -80,21 +80,21 @@ body {
 
 /* Container */
 .container {
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  max-width: 600px;
+  background-color: rgba(44, 62, 80, 0.85);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  max-width: 500px;
   width: 100%;
   text-align: center;
 }
 
 h1 {
-  color: #fff;
-  font-size: 2rem;
+  color: #f39c12; /* Gold */
+  font-size: 2.2rem;
   margin-bottom: 20px;
   font-weight: bold;
-  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 /* Input Section */
@@ -107,10 +107,10 @@ h1 {
 .custom-input {
   padding: 12px;
   font-size: 16px;
-  border: 2px solid #fff;
+  border: 2px solid #f39c12;
   border-radius: 25px;
-  margin-right: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
+  margin-right: 12px;
+  background-color: rgba(236, 240, 241, 0.2);
   color: #fff;
   transition: 0.3s ease-in-out;
 }
@@ -121,11 +121,11 @@ h1 {
 
 .custom-input:focus {
   outline: none;
-  border-color: #f39c12;
+  border-color: #e67e22; /* Orange */
 }
 
 .custom-button {
-  background-color: #f39c12;
+  background-color: #e67e22; /* Orange */
   color: #fff;
   border: none;
   padding: 12px 25px;
@@ -136,7 +136,7 @@ h1 {
 }
 
 .custom-button:hover {
-  background-color: #e67e22;
+  background-color: #d35400; /* Darker Orange */
 }
 
 .custom-button span {
@@ -145,27 +145,26 @@ h1 {
 
 /* Error Message */
 .error-message {
-  color: #e74c3c;
+  color: #e74c3c; /* Red */
   font-weight: bold;
   margin-top: 20px;
 }
 
 /* API Response Section */
 .responseApiContainer {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(236, 240, 241, 0.3);
   color: #fff;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  max-width: 500px;
   width: 100%;
   margin-top: 20px;
   text-align: left;
 }
 
 .responseApiContainer h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
 }
 
 .responseApiContainer hr {
@@ -174,7 +173,7 @@ h1 {
 }
 
 .responseApiContainer img {
-  max-width: 50px;
+  max-width: 60px;
   margin-top: 15px;
 }
 </style>
