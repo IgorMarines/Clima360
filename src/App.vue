@@ -86,6 +86,9 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
   max-width: 500px;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
